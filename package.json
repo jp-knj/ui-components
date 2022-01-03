@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@vanilla-extract/css": "1.6.8",
     "preact": "10.6.4"
   },
   "devDependencies": {
