@@ -1,23 +1,27 @@
+import {Meta, Story} from "@storybook/preact";
+
 import { Button } from './Button';
+import type { Props } from './Button'
 
 // More on default export: https://storybook.js.org/docs/preact/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Button',
-  component: Button,
-  // More on argTypes: https://storybook.js.org/docs/preact/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-    onClick: { action: 'onClick' },
-  },
-};
+    title: 'Example/Button',
+    component: Button,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+        onClick: { action: 'onClick' },
+    },
+} as Meta;
+
 
 // More on component templates: https://storybook.js.org/docs/preact/writing-stories/introduction#using-args
-const Template = (args) => <Button {...args} />;
+const Template:Story<Props> = (args:Props) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+const Primary = Template.bind({});
+
 // More on args: https://storybook.js.org/docs/preact/writing-stories/args
 Primary.args = {
-  primary: true,
+  isPrimary: true,
   label: 'Button',
 };
 
