@@ -1,4 +1,4 @@
-import './button.css';
+import { buttonPrimary, buttonSecondary, buttonSmall, buttonMedium, buttonLarge } from './button.css'
 
 export type Props = {
     isPrimary: boolean
@@ -11,11 +11,19 @@ export type Props = {
  * Primary UI component for user interaction
  */
 export const Button = ({ isPrimary = false, backgroundColor, size = 'medium', label = 'button', ...props }:Props) => {
-  const mode = isPrimary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const variantStyle = isPrimary ? buttonPrimary : buttonSecondary;
+    const sizeStyle =
+        size === 'small'
+            ? buttonSmall
+            : size === 'medium'
+                ? buttonMedium
+                : size === 'large'
+                    ? buttonLarge
+                    : ''
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={`${variantStyle} ${sizeStyle}`}
       style={backgroundColor && { backgroundColor }}
       {...props}
     >

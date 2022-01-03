@@ -1,6 +1,7 @@
 import preact from '@preact/preset-vite'
 import { StorybookConfig, CoreConfig, Options } from '@storybook/core-common'
 import { UserConfig } from 'vite'
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import { Weaken } from '../utils/weaken'
 
 interface CustomizedCoreConfig extends Weaken<CoreConfig, 'builder'> {
@@ -18,7 +19,7 @@ const config: CustomizedStorybookConfig = {
     builder: 'storybook-builder-vite'
   },
   viteFinal: (config) => {
-    config.plugins = [...config.plugins, preact()]
+    config.plugins = [...config.plugins, preact(), vanillaExtractPlugin()]
     if (process.env.NODE_ENV === 'production') {
       config.build.chunkSizeWarningLimit = 1200
     }
